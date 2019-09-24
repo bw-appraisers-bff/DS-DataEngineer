@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import predictions
+from random import randint
 
 app = Flask(__name__)
 
@@ -19,12 +20,8 @@ def estimate():
         features = [bedrooms, bathrooms, squarefeet, zipcode, yearbuilt]
         if any([string == '' for string in features]):
             return 'There was an empty value for one of the feautes.'
-    #     else:
-            # return (f'estimate: $185,000, bedrooms: {bedrooms}, '
-            #         f'bathrooms: {bathrooms}, squarefeet: {squarefeet}, '
-            #         f'zipcode: {zipcode}, yearbuilt: {yearbuilt}')
-            # return str(make_prediction(bedrooms, bathrooms,
-            #                            squarefeet, zipcode, yearbuilt))
+        else:
+            return str(randint(40000, 1000000))
 
 
 @app.route('/jayden')

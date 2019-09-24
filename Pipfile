@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 python-dotenv = "*"
+pep8 = "*"
 
 [packages]
 flask = "*"
