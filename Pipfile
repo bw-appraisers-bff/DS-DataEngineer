@@ -9,6 +9,8 @@ python-dotenv = "*"
 [packages]
 flask = "*"
 gunicorn = "*"
+numpy = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"

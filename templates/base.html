@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Appraiser-BFF</title>
+  <link rel="stylesheet" href="https://unpkg.com/picnic"/>
+  <link rel= "stylesheet" type= "text/css" href= "/static/styles.css">
+</head>
+
+<body>
+    <h1>Using {{ name }}'s model:</h1>
+    {% for key, value in features %}
+    <p>{{ key }}: {{ value }}</p>
+    {% endfor %}
+    <h2>estimate: ${{ "{:,.0f}".format(estimate) }}</h2>
+</body>
+</html>
