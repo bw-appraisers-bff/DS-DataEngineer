@@ -11,17 +11,19 @@ def estimate():
         bedrooms = request.args['bedrooms']
         bathrooms = request.args['bathrooms']
         squarefeet = request.args['squarefeet']
-        zipcode = request.args['zipcode']
         yearbuilt = request.args['yearbuilt']
     except KeyError:
         return ('Bad request: one of the required values '
                 'was missing in the request.')
     else:
-        features = [bedrooms, bathrooms, squarefeet, zipcode, yearbuilt]
-        if any([string == '' for string in features]):
+        feature_names = ['bedrooms', 'bathrooms', 'squarefeet', 'yearbuilt']
+        feature_values = [bedrooms, bathrooms, squarefeet, yearbuilt]
+        if any([string == '' for string in feature_values]):
             return 'There was an empty value for one of the feautes.'
         else:
-            return str(randint(40000, 1000000))
+            inputs = [float(value) for value in feature_values]
+            estimate = predictions.predict(inputs)
+            return str(int(estimate))
 
 
 @app.route('/jayden')

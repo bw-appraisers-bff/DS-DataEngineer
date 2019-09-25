@@ -1,5 +1,11 @@
 import pickle
 import sklearn
+from joblib import load
+
+
+def predict(inputs):
+    pipeline = load('LR_matthew.joblib')
+    return pipeline.predict([inputs])[0]
 
 
 def jayden(inputs):
