@@ -108,3 +108,8 @@ train_2017.csv
 Buildweek_xgboost.ipynb
 Buildweek_xgb.ipynb
 Buildweek_xgb.ipynb
+
+# cruft
+*.ipynb
+.vscode
+LR_matthew.joblib
