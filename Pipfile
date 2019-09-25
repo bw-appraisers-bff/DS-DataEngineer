@@ -12,6 +12,8 @@ flask = "*"
 gunicorn = "*"
 numpy = "*"
 sklearn = "*"
+xgboost = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"

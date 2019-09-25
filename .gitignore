@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+Buildweek_xgb.ipynb
+test_2017.csv
+train_2017.csv
+Buildweek_xgboost.ipynb
+Buildweek_xgb.ipynb
+Buildweek_xgb.ipynb

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from joblib import load
 import predictions
 from random import randint
 
@@ -8,22 +9,26 @@ app = Flask(__name__)
 @app.route('/')
 def estimate():
     try:
-        bedrooms = request.args['bedrooms']
         bathrooms = request.args['bathrooms']
+        bedrooms = request.args['bedrooms']
         squarefeet = request.args['squarefeet']
         yearbuilt = request.args['yearbuilt']
-    except KeyError:
+    except KeyError as e:
         return ('Bad request: one of the required values '
-                'was missing in the request.')
+                f'was missing in the request: {e}')
+    try:
+        bathrooms = float(bathrooms)
+        bedrooms = float(bedrooms)
+        squarefeet = float(squarefeet)
+        yearbuilt = float(yearbuilt)
+    except ValueError as e:
+        return ('Bad request: one of the required values '
+                f'did not represent a number: {e}')
     else:
-        feature_names = ['bedrooms', 'bathrooms', 'squarefeet', 'yearbuilt']
-        feature_values = [bedrooms, bathrooms, squarefeet, yearbuilt]
-        if any([string == '' for string in feature_values]):
-            return 'There was an empty value for one of the feautes.'
-        else:
-            inputs = [float(value) for value in feature_values]
-            estimate = predictions.predict(inputs)
-            return str(int(estimate))
+        inputs = [bathrooms, bedrooms, squarefeet, yearbuilt]
+        pipeline = load('xgboost.joblib')
+        estimate = pipeline.predict([inputs])[0]
+        return str(int(estimate))
 
 
 @app.route('/jayden')
