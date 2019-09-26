@@ -113,3 +113,5 @@ Buildweek_xgb.ipynb
 *.ipynb
 .vscode
 LR_matthew.joblib
+notebooks and data/test_prop_2017.csv
+notebooks and data/train_prop_2017.csv
