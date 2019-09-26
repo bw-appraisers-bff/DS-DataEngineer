@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-# from joblib import load
-import pickle
+from joblib import load
 import predictions
 from random import randint
 
@@ -27,11 +26,11 @@ def estimate():
                 f'did not represent a number: {e}')
     else:
         inputs = [bathrooms, bedrooms, squarefeet, yearbuilt]
-        pipeline = pickle.load(open('xgboost_model.pkl', 'rb'))
+        pipeline = load('xgboost.joblib')
         estimate = pipeline.predict([inputs])[0]
         return str(int(estimate))
 
-
+# routes below are for internal testing of alternate models
 @app.route('/jayden')
 def jayden():
     try:
