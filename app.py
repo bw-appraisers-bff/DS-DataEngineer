@@ -26,7 +26,7 @@ def estimate():
         return ('Bad request: one of the required values '
                 f'did not represent a number: {e}')
     else:
-        inputs = [bedrooms, bathrooms, squarefeet, yearbuilt]
+        inputs = [bathrooms, bedrooms, squarefeet, yearbuilt]
         pipeline = pickle.load(open('xgboost_model.pkl', 'rb'))
         estimate = pipeline.predict([inputs])[0]
         return str(int(estimate))
